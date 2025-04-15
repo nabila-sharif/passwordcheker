@@ -11,29 +11,28 @@ st.set_page_config(
 # Custom CSS
 st.markdown(
     """
-<style>
-    .main {text-align: center;}
-    .stTextInput {width: 60% !important; margin: auto;}
-    .stButton button {
-        width: 100%;
-        background-color: blue;
-        color: white;
-        font-size: 18px;
-        border-radius: 8px;
-    }
-    .stButton button:hover {
-        background-color: red;
-        color: white;
-    } 
-</style>
-""",
+    <style>
+        .main {text-align: center;}
+        .stTextInput {width: 60% !important; margin: auto;}
+        .stButton button {
+            width: 100%;
+            background-color: blue;
+            color: white;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+        .stButton button:hover {
+            background-color: red;
+            color: white;
+        } 
+    </style>
+    """,
     unsafe_allow_html=True,
 )
 
 # Page title and description
 st.title("🔒 Password Strength Generator")
 st.write("Enter your password below to check its security level. 🔍")
-
 
 # Function to check password strength
 def check_password_strength(password):
@@ -48,44 +47,36 @@ def check_password_strength(password):
     if re.search(r"[A-Z]", password) and re.search(r"[a-z]", password):
         score += 1
     else:
-        feedback.append(
-            "❌ Password should include *both uppercase (A-Z) and lowercase (a-z) letters*."
-        )
+        feedback.append("❌ Password should include *both uppercase and lowercase letters*.")
 
     if re.search(r"\d", password):
         score += 1
     else:
-        feedback.append("❌ Password should include *at least one number (0-9)*.")
+        feedback.append("❌ Password should include *at least one number (0–9)*.")
 
     if re.search(r"[!@#$%^&*]", password):
         score += 1
     else:
-        feedback.append("❌ Include *at least one special character (!@#$%^&).")
+        feedback.append("❌ Include *at least one special character (!@#$%^&*)*.")
 
-    # Display password strength results
+    # Display password strength result
     if score == 4:
         st.success("✅ *Strong Password* - Your password is secure.")
     elif score == 3:
-        st.info(
-            "⚠ *Moderate Password* - Consider improving security by adding more features."
-        )
+        st.info("⚠ *Moderate Password* - Consider adding more features for better security.")
     else:
-        st.error(
-            "❌ *Weak Password* - Follow the suggestions below to strengthen it."
-        )
+        st.error("❌ *Weak Password* - Follow the suggestions below to strengthen it.")
 
-    # Feedback
+    # Feedback section
     if feedback:
         with st.expander("🔍 *Improve Your Password*"):
             for item in feedback:
                 st.write(item)
 
-
 # Password input
 password = st.text_input(
     "Enter Your Password:", type="password", help="Ensure your password is strong 🔐"
 )
-
 
 # Centered button using columns
 col1, col2, col3 = st.columns([1, 2, 1])
@@ -95,4 +86,3 @@ with col2:
             check_password_strength(password)
         else:
             st.warning("⚠ Please enter a password first!")
-    
