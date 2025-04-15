@@ -7,11 +7,37 @@ st.set_page_config(page_title="Password Strength Checker by Nabila Sharif",page_
 #custom css
 st.markdown("""
 <style>
-        .main{text-align: center;}
-        .stTextInput {width: 60% !important; margin:}
-        .stButton button {width: 50%; background-color #4CAF50; color: width; font-size: 18px;}
-        .stButton:hover {background-color: #45a049;} 
+    .main {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .stTextInput {
+        width: 60% !important;
+        margin: 0 auto;
+        display: block;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .stButton button {
+        width: 50%;
+        background-color: blue;
+        color: white;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .stButton button:hover {
+        background-color: red;
+        color: white;
+    }
 </style>
+
 """, unsafe_allow_html=True)
 
 #page title and description
